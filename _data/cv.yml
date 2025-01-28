@@ -13,6 +13,7 @@
   contents:
     - title: PhD Candidate
       institution: DAVID Lab. University of Versailles, Paris-Saclay
+      location: Versailles, France
       year: 2021-now
       description: Discovery and extraction of relevant data for decision support in Smart Cities
     - title: Computer Engineering Diploma
@@ -25,17 +26,18 @@
   contents:
     - title: Graduate Teaching Assistant
       institution: University of Versailles, Paris-Saclay
+      location: Versailles, France
       year: 2024 - now
       description:
         - 162 Hours of class with around 30 students 
-        - Disciplines (Bachelor) : Introduction to databases, Python initiation
-        - Disciplines (Master) : Java Programming
+        - Disciplines (Bachelor) - Introduction to databases, Python initiation
+        - Disciplines (Master) - Java Programming
     
 - title: Academic Service
   type: time_table
   contents:
     - title: Junior Committee Member - JDSE (Junior Conference on Data Science and Engineering)
-      website: https://zoechevallier1.github.io/jdse-2024/
+      url: https://zoechevallier1.github.io/jdse-2024/
       year: 2024
       description:
         - Conference organization
