@@ -67,6 +67,13 @@ ninja.data = [{
           window.open("mailto:%7A%6F%65.%63%68%65%76%61%6C%6C%69%65%72@%75%76%73%71.%66%72", "_blank");
         },
       },{
+        id: 'social-linkedin',
+        title: 'LinkedIn',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/zoe-chevallier-b26550128", "_blank");
+        },
+      },{
         id: 'social-scholar',
         title: 'Google Scholar',
         section: 'Socials',
