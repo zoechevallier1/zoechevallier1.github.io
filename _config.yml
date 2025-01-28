@@ -3,9 +3,9 @@
 # -----------------------------------------------------------------------------
 
 title: blank # the website title (if blank, full name will be used instead)
-first_name: You
-middle_name: R.
-last_name: Name
+first_name: Zoé
+middle_name: 
+last_name: Chevallier
 contact_note: >
   You can even add a little note about which of these is the best way to reach you.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
@@ -94,10 +94,10 @@ lsi: false # produce an index for related posts
 
 # Pagination
 pagination:
-  enabled: true
+  enabled: false
 
 related_blog_posts:
-  enabled: true
+  enabled: false
   max_related: 5
 
 # Giscus comments (RECOMMENDED)
@@ -192,6 +192,12 @@ exclude:
   - README.md
   - readme_preview/
   - vendor
+  - _news/announcement_*.md
+  - _pages/blog.md
+  - _posts/
+  - _projects/?_project.md
+  - assets/jupyter/blog.ipynb
+  
 keep_files:
   - CNAME
   - .nojekyll
