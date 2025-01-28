@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: PhD Candidate at DAVID Lab., University of Versailles, Paris-Saclay.
 
