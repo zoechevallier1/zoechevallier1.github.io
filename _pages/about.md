@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: PhD Candidate. 
+subtitle: PhD Candidate at DAVID Lab., University of Versailles, Paris-Saclay.
 
 profile:
   align: right
