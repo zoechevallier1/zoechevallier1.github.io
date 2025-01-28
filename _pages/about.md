@@ -7,7 +7,7 @@ subtitle: PhD Candidate at DAVID Lab., University of Versailles, Paris-Saclay.
 profile:
   align: right
   image: ZoeChevallier.jpeg
-  image_circular: false # crops the image to make it circular
+  image_circular: true # crops the image to make it circular
   more_info: 
 
 selected_papers: false # includes a list of papers marked as "selected={true}"
