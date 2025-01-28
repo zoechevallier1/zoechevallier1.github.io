@@ -31,3 +31,12 @@
         - Disciplines (Bachelor) : Introduction to databases, Python initiation
         - Disciplines (Master) : Java Programming
     
+- title: Academic Service
+  type: time_table
+  contents:
+    - title: Junior Committee Member - JDSE (Junior Conference on Data Science and Engineering)
+      url: https://zoechevallier1.github.io/jdse-2024/
+      year: 2024
+    - title: PhD Student Representative
+      institution: DAVID Lab., University of Versailles Paris-Saclay
+      year: 2022-2025
