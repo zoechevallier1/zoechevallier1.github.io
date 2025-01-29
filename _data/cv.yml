@@ -6,7 +6,7 @@
     - name: Date of Birth
       value: 8th July 1997
     - name: Languages
-      value: French, English
+      value: French (Native Speaker), English (Fluent)
 
 - title: Education
   type: time_table
@@ -33,6 +33,14 @@
         - 162 Hours of class with around 30 students 
         - Disciplines (Bachelor) - Introduction to databases, Python initiation
         - Disciplines (Master) - Java Programming
+    - title : Private Mathematics Tutor 
+      institution: Anacours
+      location: Versailles, France
+      year: 2017-2021
+      description:
+        - I tutored students from 9th grade (equivalent to Year 10 in the UK) to their final year of high school in the French education system
+        - Designed customized lesson plans to improve comprehension and problem-solving skills
+        - Prepared students for exams such as French National Diploma (Diplôme National du Brevet) and French Baccalaureate (Baccalauréat français)
     
 - title: Academic Service
   type: time_table
