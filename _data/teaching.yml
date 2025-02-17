@@ -1,15 +1,15 @@
 - title: An Introduction to Databases
   type: map
   contents:
-    - name: Level
-      value: Bachelor (2nd year)
-    - name: Course Content
-      value: 
+    - title: Level
+      description: Bachelor (2nd year)
+    - title: Course Content
+      description: 
         - Generation of entity-association models
         - Relational Algebra
         - SQL Queries                                                                                                                       
-    - name: Implication
-      value: 
+    - title: Implication
+      description: 
         - Supervising tutorials and practical work
         - Generation of exam subjects
         - Marking and Grading of tests
