@@ -1,9 +1,16 @@
-- title: General Information
+- title: An Introduction to Databases
   type: map
   contents:
-    - name: Full Name
-      value: Zoé Chevallier
-    - name: Date of Birth
-      value: 8th July 1997
-    - name: Languages
-      value: French (Native Speaker), English (Fluent)
+    - name: Level
+      value: Bachelor (2nd year)
+    - name: Course Content
+      value: 
+        - Generation of entity-association models
+        - Relational Algebra
+        - SQL Queries                                                                                                                       
+    - name: Implication
+      value: 
+        - Generation of exam subjects
+        - Marking and Grading of tests
+
+        
