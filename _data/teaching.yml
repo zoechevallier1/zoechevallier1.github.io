@@ -6,6 +6,30 @@
     - name: Course Content
       value: Pseudo-code algorithm, Complexity, Data structures (arrays, stacks/queues, linked lists, and different trees), Algorithms principles (recursion, sorting algorithms, tree processing algorithms)
 
+- title: Introduction to programming
+  type: map
+  contents:
+    - name: Level
+      value: Bachelor (1st year)
+    - name: Course Content
+      value: Python language
+
+- title: Programming, Software engineering
+  type: map
+  contents:
+    - name: Level
+      value: Master degree (1st year)
+    - name: Course Content
+      value: Java language, Object-Oriented Programming
+
+- title: Programming bridging course
+  type: map
+  contents:
+    - name: Level
+      value: Master degree (1st year)
+    - name: Course Content
+      value: Java language, Object-Oriented Programming
+
 - title: Introduction to Databases
   type: map
   contents:
