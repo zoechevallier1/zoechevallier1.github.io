@@ -1,7 +1,17 @@
-- title: An Introduction to Databases
+- title: Data Structures and Algorithms
+  type: map
+  contents:
+    - name: Level
+      value: Bachelor (2nd year)
+    - name: Course Content
+      value: Pseudo-code algorithm, Complexity, Data structures (arrays, stacks/queues, linked lists, and different trees), Algorithms principles (recursion, sorting algorithms, tree processing algorithms)
+
+- title: Introduction to Databases
   type: map
   contents:
     - name: Level
       value: Bachelor (2nd year)
     - name: Course Content
       value: Entity-association models, relational algebra, SQL
+
+
