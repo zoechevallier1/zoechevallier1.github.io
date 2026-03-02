@@ -32,10 +32,15 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Graduate Teaching Assistant
+    - title: Postdoctoral Researcher
+      institution: University of Verona
+      location: Verona, Italy
+      year: 2026-now
+      description: Part of the DataGEMS project (https://datagems.eu/) funded by the European Union's Horizon Europe research and innovation programme under grant agreement No 101122449. My research focuses on poly/multi stores and virtual knowledge graphs.
+      - title: Graduate Teaching Assistant
       institution: University of Versailles, Paris-Saclay
       location: Versailles, France
-      year: 2024 - now
+      year: 2024 - 2026
       description:
         - 162 Hours of class with around 30 students 
         - Disciplines (Bachelor) - Introduction to databases, Python initiation

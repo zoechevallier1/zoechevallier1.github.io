@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: PhD Candidate at DAVID Lab., University of Versailles, Paris-Saclay.
+subtitle: Postdoctoral Researcher at University of Verona, Italy.
 
 profile:
   align: right
@@ -24,4 +24,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am currently finishing my PhD Thesis entitled "Discovery and extraction of relevant data for decision support in Smart Cities". I am actively looking for a post-doc position starting in September 2025.
+I am a Postdoctoral Researcher at the University of Verona in Italy, in the DataGEMS project. 
+
+My research focuses on Data Exploration, Graph Data Management, and Knowledge Graphs. 
+
+Previously, I did a PhD entitled "Data Discovery and Extraction in the Web of Data" in the DAVID lab. of Versailles Paris-Saclay under the supervision of Zoubida Kedad and Beatrice Finance. This PhD was a partnership with the local authority Grand Paris Sud. 
