@@ -1,4 +1,5 @@
 {% assign sections = include.sections %}
+{% assign variant = include.variant %}
 
 {% if sections and sections.size > 0 %}
   {% for section in sections %}
@@ -7,16 +8,45 @@
       <h3 class="card-title font-weight-medium">{{ section.title }}</h3>
 
       {% if section.type == 'map' %}
-        <table class="table table-cv table-sm table-borderless">
+        {% if variant == 'teaching' %}
+          {% assign level = '' %}
+          {% assign course_content = '' %}
+
           {% for item in section.contents %}
-            <tr>
-              <td class="p-1 pr-2 font-weight-bold">
-                <b>{{ item.name }}</b>
-              </td>
-              <td class="p-1 pl-2 font-weight-light">{{ item.value }}</td>
-            </tr>
+            {% if item.name == 'Level' %}
+              {% assign level = item.value %}
+            {% elsif item.name == 'Course Content' %}
+              {% assign course_content = item.value %}
+            {% endif %}
           {% endfor %}
-        </table>
+
+          {% if level != '' %}
+            <p class="mb-2 text-muted"><strong>Level:</strong> {{ level }}</p>
+          {% endif %}
+
+          {% if course_content != '' %}
+            <p class="mb-0">{{ course_content }}</p>
+          {% endif %}
+
+          {% for item in section.contents %}
+            {% unless item.name == 'Level' or item.name == 'Course Content' %}
+              <p class="mb-1">
+                <strong>{{ item.name }}:</strong> {{ item.value }}
+              </p>
+            {% endunless %}
+          {% endfor %}
+        {% else %}
+          <table class="table table-cv table-sm table-borderless">
+            {% for item in section.contents %}
+              <tr>
+                <td class="p-1 pr-2 font-weight-bold">
+                  <b>{{ item.name }}</b>
+                </td>
+                <td class="p-1 pl-2 font-weight-light">{{ item.value }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        {% endif %}
       {% elsif section.type == 'time_table' %}
         {% for item in section.contents %}
           <div class="mb-3">
