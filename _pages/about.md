@@ -2,11 +2,11 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>University of Verona </a>.
+subtitle: <a href='#'>University of Verona</a>.
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: ZoeChevallier.jpeg
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>University of Verona, Italy</p>
@@ -25,8 +25,6 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a Postdoctoral Researcher at the University of Verona in Italy, under the supervision of Matteo Lissandrini. My research focus on Data Discovery and Management, with a specific focus on Knowledge Graphs. I am currently involved in the DataGEMS project, specifically on the development of a polyglot query engine.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+I obtained my PhD entitled "Data Discovery and Extraction in the Web of Data" in September 2025 in the David Laboratory, University of Versailles Paris Saclay and the local authority Grand Paris Sud. My PhD work was supervised by Zoubida Kedad, Béatrice Finance.
