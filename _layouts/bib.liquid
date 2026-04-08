@@ -1,7 +1,15 @@
 ---
 ---
 <div class="row">
-  {% if site.enable_publication_thumbnails %}
+  {% assign has_publication_sidebar = false %}
+  {% if entry.abbr %}
+    {% assign has_publication_sidebar = true %}
+  {% endif %}
+  {% if site.enable_publication_thumbnails and entry.preview %}
+    {% assign has_publication_sidebar = true %}
+  {% endif %}
+
+  {% if has_publication_sidebar %}
     <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
         {%- if site.data.venues[entry.abbr] -%}
@@ -46,7 +54,7 @@
   {% endif %}
 
   <!-- Entry bib key -->
-  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
+  <div id="{{ entry.key }}" class="{% if has_publication_sidebar %}col-sm-10{% else %}col-12{% endif %}">
     <!-- Title -->
     <div class="title">{{ entry.title }}</div>
     <!-- Author -->
