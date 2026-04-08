@@ -41,10 +41,15 @@ layout: default
     <div class="cv">
       {% comment %} Determine which CV format to render {% endcomment %}
       {% assign render_rendercv = false %}
+      {% assign render_legacy_cv = false %}
       {% assign render_jsonresume = false %}
 
       {% if page.cv_format == 'rendercv' %}
-        {% assign render_rendercv = true %}
+        {% if site.data.cv and site.data.cv.cv %}
+          {% assign render_rendercv = true %}
+        {% elsif site.data.cv and site.data.cv[0] and site.data.cv[0].title %}
+          {% assign render_legacy_cv = true %}
+        {% endif %}
       {% elsif page.cv_format == 'jsonresume' %}
         {% assign render_jsonresume = true %}
       {% else %}
@@ -53,6 +58,8 @@ layout: default
           {% assign render_rendercv = true %}
         {% elsif site.data.resume %}
           {% assign render_jsonresume = true %}
+        {% elsif site.data.cv and site.data.cv[0] and site.data.cv[0].title %}
+          {% assign render_legacy_cv = true %}
         {% endif %}
       {% endif %}
 
@@ -195,6 +202,9 @@ layout: default
             </div>
           </div>
         {% endfor %}
+
+      {% elsif render_legacy_cv and site.data.cv %}
+        {% include data_sections.liquid sections=site.data.cv %}
 
       {% elsif render_jsonresume and site.data.resume %}
         {% comment %} JSONResume format {% endcomment %}

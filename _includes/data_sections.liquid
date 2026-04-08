@@ -1,0 +1,77 @@
+{% assign sections = include.sections %}
+
+{% if sections and sections.size > 0 %}
+  {% for section in sections %}
+    <a class="anchor" id="{{ section.title | slugify }}"></a>
+    <div class="card mt-3 p-3">
+      <h3 class="card-title font-weight-medium">{{ section.title }}</h3>
+
+      {% if section.type == 'map' %}
+        <table class="table table-cv table-sm table-borderless">
+          {% for item in section.contents %}
+            <tr>
+              <td class="p-1 pr-2 font-weight-bold">
+                <b>{{ item.name }}</b>
+              </td>
+              <td class="p-1 pl-2 font-weight-light">{{ item.value }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      {% elsif section.type == 'time_table' %}
+        {% for item in section.contents %}
+          <div class="mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-baseline">
+              <div>
+                {% if item.url %}
+                  <strong
+                    ><a href="{{ item.url }}">{{ item.title }}</a></strong
+                  >
+                {% else %}
+                  <strong>{{ item.title }}</strong>
+                {% endif %}
+                {% if item.institution %}
+                  <span class="font-weight-light">, {{ item.institution }}</span>
+                {% endif %}
+              </div>
+              {% if item.year %}
+                <span class="font-weight-light">{{ item.year }}</span>
+              {% endif %}
+            </div>
+
+            {% if item.location %}
+              <div class="text-muted">{{ item.location }}</div>
+            {% endif %}
+
+            {% if item.description %}
+              {% assign description_json = item.description | jsonify %}
+              {% assign description_type = description_json | slice: 0, 1 %}
+
+              {% if description_type == '[' %}
+                <ul class="mb-0 mt-2">
+                  {% for detail in item.description %}
+                    <li>{{ detail }}</li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <p class="mb-0 mt-2">{{ item.description }}</p>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for item in section.contents %}
+          <div class="mb-2">
+            {% if item.name %}
+              <strong>{{ item.name }}:</strong>
+            {% endif %}
+            {% if item.value %}
+              <span>{{ item.value }}</span>
+            {% elsif item.description %}
+              <span>{{ item.description }}</span>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endif %}

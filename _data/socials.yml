@@ -8,7 +8,8 @@ linkedin_username: zoe-chevallier-b26550128 # your LinkedIn profile username/slu
 #rss_icon: true # comment this line to hide the RSS icon
 scholar_userid: TdXjdssAAAAJ # your Google Scholar ID
 github_username: zoechvallier1 # your GitHub username
-orcid_id: 0009-0009-5235-5923 # your OR
+orcid_id: 0009-0009-5235-5923 # your ORCID ID
+dblp_url: https://dblp.org/pid/281/5271.html # your DBLP profile URL
 # wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
 # whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
 
