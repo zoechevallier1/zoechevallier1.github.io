@@ -25,17 +25,10 @@ ninja.data = [{
           },
         },{id: "nav-teaching",
           title: "Teaching",
-          description: "Course materials, schedules, and resources for classes taught.",
+          description: "Teaching experience and course content.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teaching/";
-          },
-        },{id: "nav-submenus",
-          title: "submenus",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/_pages/dropdown/";
           },
         },{id: "post-a-post-with-plotly-js",
         
@@ -512,6 +505,13 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("https://orcid.org/0009-0009-5235-5923", "_blank");
+        },
+      },{
+        id: 'social-dblp',
+        title: 'DBLP',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://dblp.org/pid/281/5271.html", "_blank");
         },
       },{
       id: 'light-theme',
