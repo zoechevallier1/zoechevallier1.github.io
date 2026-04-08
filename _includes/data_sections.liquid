@@ -1,8 +1,8 @@
 {% assign sections = include.sections %}
 {% assign variant = include.variant %}
 
-{% if sections and sections.size > 0 %}
-  {% for section in sections %}
+{%- if sections and sections.size > 0 -%}
+  {%- for section in sections -%}
     <a class="anchor" id="{{ section.title | slugify }}"></a>
     <div class="card mt-3 p-3">
       <h3 class="card-title font-weight-medium">{{ section.title }}</h3>
@@ -103,5 +103,5 @@
         {% endfor %}
       {% endif %}
     </div>
-  {% endfor %}
-{% endif %}
+  {%- endfor -%}
+{%- endif -%}
