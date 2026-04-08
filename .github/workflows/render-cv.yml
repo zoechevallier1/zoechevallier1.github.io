@@ -34,18 +34,7 @@ jobs:
             exit 1
           fi
 
-          is_rendercv=$(CV_FILE="$cv_file" python - <<'PY'
-import os
-import yaml
-
-path = os.environ["CV_FILE"]
-with open(path, "r", encoding="utf-8") as f:
-    data = yaml.safe_load(f)
-
-print("true" if isinstance(data, dict) and "cv" in data else "false")
-PY
-)
-          if [ "$is_rendercv" != "true" ]; then
+          if ! grep -Eq '^[[:space:]]*cv:[[:space:]]*($|#)' "$cv_file"; then
             echo "Legacy or non-RenderCV format detected in $cv_file; skipping RenderCV generation."
             echo "should_render=false" >> "$GITHUB_OUTPUT"
             exit 0
