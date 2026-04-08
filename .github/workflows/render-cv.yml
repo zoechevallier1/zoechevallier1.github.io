@@ -26,12 +26,32 @@ jobs:
         run: |
           pip install -r requirements.txt
       - name: RenderCV
+        id: render
         run: |
           cv_file=$(find _data  -maxdepth 1 -type f \( -name "cv.yaml" -o -name "cv.yml" \))
           if [ -z "$cv_file" ]; then
             echo "No cv.yml file found!"
             exit 1
           fi
+
+          is_rendercv=$(CV_FILE="$cv_file" python - <<'PY'
+import os
+import yaml
+
+path = os.environ["CV_FILE"]
+with open(path, "r", encoding="utf-8") as f:
+    data = yaml.safe_load(f)
+
+print("true" if isinstance(data, dict) and "cv" in data else "false")
+PY
+)
+          if [ "$is_rendercv" != "true" ]; then
+            echo "Legacy or non-RenderCV format detected in $cv_file; skipping RenderCV generation."
+            echo "should_render=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "should_render=true" >> "$GITHUB_OUTPUT"
+
           rendercv_dir=$(find assets -maxdepth 1 -type d -name "rendercv")
           if [ -z "$rendercv_dir" ]; then
             echo "No RenderCV config directory found!"
@@ -45,11 +65,13 @@ jobs:
           rendercv render $cv_file --settings $settings
           rm assets/rendercv/rendercv_output/*.typ
       - name: Upload rendercv_output as an artifact
+        if: steps.render.outputs.should_render == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: RenderCV Output
           path: assets/rendercv/rendercv_output
       - name: Push the changes
+        if: steps.render.outputs.should_render == 'true'
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
