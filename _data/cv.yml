@@ -8,27 +8,6 @@
     - name: Languages
       value: French (Native Speaker), English (Fluent), Italian (Beginner)
 
-- title: Education
-  type: time_table
-  contents:
-    - title: PhD Candidate
-      institution: DAVID Lab. University of Versailles, Paris-Saclay
-      location: Versailles, France
-      year: 2021-now
-      description: Discovery and extraction of relevant data for decision support in Smart Cities
-    - title: Computer Engineering Diploma
-      institution: ISTY (Institut des Sciences et Techniques des Yvelines)
-      location: Versailles, France
-      year: 2016 - 2019
-    - title: Preparatory Class for Grandes Écoles (CPGE), Mathematics and Physics track
-      institution: Lycée Marceau
-      location: Chartres, France
-      year: 2014-2016
-    - title: French Baccalauréat in Science, with honors
-      institution: Lycée Marceau
-      location: Chartres, France
-      year: 2014
-
 - title: Experience
   type: time_table
   contents:
@@ -53,6 +32,27 @@
         - I tutored students from 9th grade (equivalent to Year 10 in the UK) to their final year of high school in the French education system
         - Designed customized lesson plans to improve comprehension and problem-solving skills
         - Prepared students for exams such as French National Diploma (Diplôme National du Brevet) and French Baccalaureate (Baccalauréat français)
+
+- title: Education
+  type: time_table
+  contents:
+    - title: PhD Candidate
+      institution: DAVID Lab. University of Versailles, Paris-Saclay
+      location: Versailles, France
+      year: 2021-2025
+      description: Discovery and extraction of relevant data for decision support in Smart Cities
+    - title: Computer Engineering Diploma
+      institution: ISTY (Institut des Sciences et Techniques des Yvelines)
+      location: Versailles, France
+      year: 2016 - 2019
+    - title: Preparatory Class for Grandes Écoles (CPGE), Mathematics and Physics track
+      institution: Lycée Marceau
+      location: Chartres, France
+      year: 2014-2016
+    - title: French Baccalauréat in Science, with honors
+      institution: Lycée Marceau
+      location: Chartres, France
+      year: 2014
 
 - title: Academic Service
   type: time_table

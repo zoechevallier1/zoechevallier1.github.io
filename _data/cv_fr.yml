@@ -8,27 +8,6 @@
     - name: Langues
       value: Français (langue maternelle), Anglais (courant), Italien (débutant)
 
-- title: Formation
-  type: time_table
-  contents:
-    - title: Doctorante
-      institution: Laboratoire DAVID, Université de Versailles Paris-Saclay
-      location: Versailles, France
-      year: 2021-now
-      description: Découverte et extraction de données pertinentes dans le web des données
-    - title: Diplôme d'ingénieure en informatique
-      institution: ISTY (Institut des Sciences et Techniques des Yvelines)
-      location: Versailles, France
-      year: 2016 - 2019
-    - title: Classe préparatoire aux grandes écoles (CPGE), mathématiques et physique
-      institution: Lycée Marceau
-      location: Chartres, France
-      year: 2014-2016
-    - title: Baccalauréat scientifique, mention bien
-      institution: Lycée Marceau
-      location: Chartres, France
-      year: 2014
-
 - title: Expérience
   type: time_table
   contents:
@@ -53,6 +32,27 @@
         - J'ai accompagné des élèves de la 3e à la terminale
         - Conception de plans de cours personnalisés pour renforcer la compréhension et la résolution de problèmes
         - Préparation aux examens, notamment le Diplôme National du Brevet et le Baccalauréat
+
+- title: Formation
+  type: time_table
+  contents:
+    - title: Doctorante
+      institution: Laboratoire DAVID, Université de Versailles Paris-Saclay
+      location: Versailles, France
+      year: 2021-2025
+      description: Découverte et extraction de données pertinentes dans le web des données
+    - title: Diplôme d'ingénieure en informatique
+      institution: ISTY (Institut des Sciences et Techniques des Yvelines)
+      location: Versailles, France
+      year: 2016 - 2019
+    - title: Classe préparatoire aux grandes écoles (CPGE), mathématiques et physique
+      institution: Lycée Marceau
+      location: Chartres, France
+      year: 2014-2016
+    - title: Baccalauréat scientifique, mention bien
+      institution: Lycée Marceau
+      location: Chartres, France
+      year: 2014
 
 - title: Charges collectives
   type: time_table
