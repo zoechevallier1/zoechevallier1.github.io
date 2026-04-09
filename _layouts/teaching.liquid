@@ -16,7 +16,28 @@ layout: default
 
   <article>
     {{ content }}
-    {% include data_sections.liquid sections=site.data.teaching variant='teaching' %}
+    {% assign teaching_sections = site.data.teaching %}
+    {% if teaching_sections and teaching_sections.size > 0 %}
+      <div class="row teaching-layout mt-4">
+        <aside class="col-lg-3 teaching-sidebar-wrap">
+          <nav class="teaching-sidebar" aria-label="Teaching lesson titles">
+            <h2 class="teaching-sidebar-title">Lessons</h2>
+            <ul class="list-unstyled mb-0">
+              {% for section in teaching_sections %}
+                <li>
+                  <a class="teaching-sidebar-link" href="#{{ section.title | slugify }}">{{ section.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </aside>
+        <div class="col-lg-9">
+          {% include data_sections.liquid sections=teaching_sections variant='teaching' %}
+        </div>
+      </div>
+    {% else %}
+      {% include data_sections.liquid sections=site.data.teaching variant='teaching' %}
+    {% endif %}
   </article>
 
   {% if site.giscus and page.giscus_comments %}

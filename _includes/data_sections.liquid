@@ -8,85 +8,158 @@
       <h3 class="card-title font-weight-medium">{{ section.title }}</h3>
 
       {% if section.type == 'map' %}
-        {% if variant == 'teaching' %}
-          {% assign level = '' %}
-          {% assign course_content = '' %}
-
+        <table class="table table-cv table-sm table-borderless{% if variant == 'teaching' %} table-teaching-map{% endif %}">
           {% for item in section.contents %}
-            {% if item.name == 'Level' %}
-              {% assign level = item.value %}
-            {% elsif item.name == 'Course Content' %}
-              {% assign course_content = item.value %}
-            {% endif %}
+            <tr>
+              <td class="p-1 pr-2 font-weight-bold">
+                <b>{{ item.name }}</b>
+              </td>
+              <td class="p-1 pl-2 font-weight-light">{{ item.value }}</td>
+            </tr>
           {% endfor %}
-
-          {% if level != '' %}
-            <p class="mb-2 text-muted"><strong>Level:</strong> {{ level }}</p>
-          {% endif %}
-
-          {% if course_content != '' %}
-            <p class="mb-0">{{ course_content }}</p>
-          {% endif %}
-
-          {% for item in section.contents %}
-            {% unless item.name == 'Level' or item.name == 'Course Content' %}
-              <p class="mb-1">
-                <strong>{{ item.name }}:</strong> {{ item.value }}
-              </p>
-            {% endunless %}
-          {% endfor %}
-        {% else %}
-          <table class="table table-cv table-sm table-borderless">
-            {% for item in section.contents %}
-              <tr>
-                <td class="p-1 pr-2 font-weight-bold">
-                  <b>{{ item.name }}</b>
-                </td>
-                <td class="p-1 pl-2 font-weight-light">{{ item.value }}</td>
-              </tr>
-            {% endfor %}
-          </table>
-        {% endif %}
+        </table>
       {% elsif section.type == 'time_table' %}
         {% for item in section.contents %}
-          <div class="mb-3">
-            <div class="d-flex flex-wrap justify-content-between align-items-baseline">
-              <div>
-                {% if item.url %}
-                  <strong
-                    ><a href="{{ item.url }}">{{ item.title }}</a></strong
-                  >
-                {% else %}
-                  <strong>{{ item.title }}</strong>
-                {% endif %}
-                {% if item.institution %}
-                  <span class="font-weight-light">, {{ item.institution }}</span>
+          {% if variant == 'teaching' %}
+            <div class="mb-3">
+              <div class="d-flex flex-wrap justify-content-between align-items-baseline">
+                <div>
+                  {% if item.url %}
+                    <strong
+                      ><a href="{{ item.url }}">{{ item.title }}</a></strong
+                    >
+                  {% else %}
+                    <strong>{{ item.title }}</strong>
+                  {% endif %}
+                  {% if item.institution %}
+                    <span class="font-weight-light">, {{ item.institution }}</span>
+                  {% endif %}
+                </div>
+                {% if item.year %}
+                  <span class="font-weight-light">{{ item.year }}</span>
                 {% endif %}
               </div>
-              {% if item.year %}
-                <span class="font-weight-light">{{ item.year }}</span>
+
+              {% if item.location %}
+                <div class="text-muted">{{ item.location }}</div>
+              {% endif %}
+
+              {% if item.description %}
+                {% assign description_json = item.description | jsonify %}
+                {% assign description_type = description_json | slice: 0, 1 %}
+
+                {% if description_type == '[' %}
+                  <ul class="mb-0 mt-2">
+                    {% for detail in item.description %}
+                      <li>{{ detail }}</li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  <p class="mb-0 mt-2">{{ item.description }}</p>
+                {% endif %}
               {% endif %}
             </div>
+          {% else %}
+            <ul class="card-text font-weight-light list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="row">
+                  {% if item.year %}
+                    <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
+                      <table class="table-cv">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+                                {{- item.year -}}
+                              </span>
+                            </td>
+                          </tr>
+                          {% if item.location %}
+                            <tr>
+                              <td>
+                                <p class="location">
+                                  <i class="fa-solid fa-location-dot iconlocation"></i>
+                                  {{ item.location }}
+                                </p>
+                              </td>
+                            </tr>
+                          {% endif %}
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+                      {% if item.url %}
+                        <h6 class="title font-weight-bold ml-1 ml-md-4">
+                          <a href="{{ item.url }}">{{ item.title }}</a>
+                        </h6>
+                      {% else %}
+                        <h6 class="title font-weight-bold ml-1 ml-md-4">{{ item.title }}</h6>
+                      {% endif %}
 
-            {% if item.location %}
-              <div class="text-muted">{{ item.location }}</div>
-            {% endif %}
+                      {% if item.institution %}
+                        <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ item.institution }}</h6>
+                      {% endif %}
 
-            {% if item.description %}
-              {% assign description_json = item.description | jsonify %}
-              {% assign description_type = description_json | slice: 0, 1 %}
+                      {% if item.description %}
+                        {% assign description_json = item.description | jsonify %}
+                        {% assign description_type = description_json | slice: 0, 1 %}
 
-              {% if description_type == '[' %}
-                <ul class="mb-0 mt-2">
-                  {% for detail in item.description %}
-                    <li>{{ detail }}</li>
-                  {% endfor %}
-                </ul>
-              {% else %}
-                <p class="mb-0 mt-2">{{ item.description }}</p>
-              {% endif %}
-            {% endif %}
-          </div>
+                        {% if description_type == '[' %}
+                          <ul class="items">
+                            {% for detail in item.description %}
+                              <li>
+                                <span class="item">{{ detail | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% else %}
+                          <p class="ml-1 ml-md-4">{{ item.description | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  {% else %}
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                      {% if item.url %}
+                        <h6 class="title font-weight-bold ml-1 ml-md-4">
+                          <a href="{{ item.url }}">{{ item.title }}</a>
+                        </h6>
+                      {% else %}
+                        <h6 class="title font-weight-bold ml-1 ml-md-4">{{ item.title }}</h6>
+                      {% endif %}
+
+                      {% if item.institution %}
+                        <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ item.institution }}</h6>
+                      {% endif %}
+
+                      {% if item.location %}
+                        <p class="ml-1 ml-md-4 location">
+                          <i class="fa-solid fa-location-dot iconlocation"></i>
+                          {{ item.location }}
+                        </p>
+                      {% endif %}
+
+                      {% if item.description %}
+                        {% assign description_json = item.description | jsonify %}
+                        {% assign description_type = description_json | slice: 0, 1 %}
+
+                        {% if description_type == '[' %}
+                          <ul class="items">
+                            {% for detail in item.description %}
+                              <li>
+                                <span class="item">{{ detail | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% else %}
+                          <p class="ml-1 ml-md-4">{{ item.description | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              </li>
+            </ul>
+          {% endif %}
         {% endfor %}
       {% else %}
         {% for item in section.contents %}

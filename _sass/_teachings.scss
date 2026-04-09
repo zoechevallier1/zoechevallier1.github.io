@@ -75,3 +75,66 @@
   padding-left: 18px;
   margin-bottom: 0;
 }
+
+.teaching-layout {
+  align-items: flex-start;
+}
+
+.teaching-sidebar-wrap {
+  margin-bottom: 1rem;
+}
+
+.teaching-sidebar {
+  position: sticky;
+  top: 5rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.5rem;
+  background-color: var(--global-bg-color);
+  padding: 1rem;
+}
+
+.teaching-sidebar-title {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.teaching-sidebar-link {
+  display: block;
+  padding: 0.35rem 0;
+  color: var(--global-text-color);
+  text-decoration: none;
+  line-height: 1.2;
+
+  &:hover,
+  &:focus {
+    color: var(--global-theme-color);
+    text-decoration: none;
+  }
+}
+
+.teaching-layout .card-title {
+  font-size: 1.2rem;
+}
+
+.table-teaching-map {
+  td:first-child {
+    width: 9.5rem;
+    white-space: nowrap;
+    vertical-align: top;
+  }
+
+  td:last-child {
+    vertical-align: top;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .teaching-sidebar {
+    position: static;
+  }
+
+  .table-teaching-map td:first-child {
+    width: 8rem;
+  }
+}
