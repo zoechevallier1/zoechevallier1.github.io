@@ -15,6 +15,12 @@ layout: default
   </header>
 
   <article>
+    {% assign current_lang = page.lang | default: site.lang | split: '-' | first %}
+    {% assign lang_prefix = '' %}
+    {% if current_lang == 'fr' %}
+      {% assign lang_prefix = '/fr' %}
+    {% endif %}
+
     {% if page.profile %}
       <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
         {% if page.profile.image %}
@@ -43,7 +49,7 @@ layout: default
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+        <a href="{{ lang_prefix | append: '/news/' | relative_url }}" style="color: inherit">news</a>
       </h2>
       {% include news.liquid limit=true %}
     {% endif %}
@@ -51,7 +57,7 @@ layout: default
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
       <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+        <a href="{{ lang_prefix | append: '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
       </h2>
       {% include latest_posts.liquid %}
     {% endif %}
@@ -69,7 +75,7 @@ layout: default
     {% if page.selected_papers %}
       <div class="mt-4">
         <h2>
-          <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
+          <a href="{{ lang_prefix | append: '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
         </h2>
       </div>
       {% include selected_papers.liquid %}

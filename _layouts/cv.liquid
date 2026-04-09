@@ -39,33 +39,45 @@ layout: default
 
   <article>
     <div class="cv">
+      {% assign current_lang = page.lang | default: site.lang | split: '-' | first %}
+      {% assign cv_data = site.data.cv %}
+      {% assign resume_data = site.data.resume %}
+      {% if current_lang == 'fr' %}
+        {% if site.data.cv_fr %}
+          {% assign cv_data = site.data.cv_fr %}
+        {% endif %}
+        {% if site.data.resume_fr %}
+          {% assign resume_data = site.data.resume_fr %}
+        {% endif %}
+      {% endif %}
+
       {% comment %} Determine which CV format to render {% endcomment %}
       {% assign render_rendercv = false %}
       {% assign render_legacy_cv = false %}
       {% assign render_jsonresume = false %}
 
       {% if page.cv_format == 'rendercv' %}
-        {% if site.data.cv and site.data.cv.cv %}
+        {% if cv_data and cv_data.cv %}
           {% assign render_rendercv = true %}
-        {% elsif site.data.cv and site.data.cv[0] and site.data.cv[0].title %}
+        {% elsif cv_data and cv_data[0] and cv_data[0].title %}
           {% assign render_legacy_cv = true %}
         {% endif %}
       {% elsif page.cv_format == 'jsonresume' %}
         {% assign render_jsonresume = true %}
       {% else %}
         {% comment %} Legacy behavior: RenderCV takes priority if both exist {% endcomment %}
-        {% if site.data.cv and site.data.cv.cv %}
+        {% if cv_data and cv_data.cv %}
           {% assign render_rendercv = true %}
-        {% elsif site.data.resume %}
+        {% elsif resume_data %}
           {% assign render_jsonresume = true %}
-        {% elsif site.data.cv and site.data.cv[0] and site.data.cv[0].title %}
+        {% elsif cv_data and cv_data[0] and cv_data[0].title %}
           {% assign render_legacy_cv = true %}
         {% endif %}
       {% endif %}
 
-      {% if render_rendercv and site.data.cv and site.data.cv.cv %}
+      {% if render_rendercv and cv_data and cv_data.cv %}
         {% comment %} RenderCV format {% endcomment %}
-        {% assign cv = site.data.cv.cv %}
+        {% assign cv = cv_data.cv %}
 
         <!-- Header/Contact Information -->
         {% if cv.name or cv.label or cv.location or cv.email or cv.phone or cv.website %}
@@ -203,17 +215,17 @@ layout: default
           </div>
         {% endfor %}
 
-      {% elsif render_legacy_cv and site.data.cv %}
-        {% include data_sections.liquid sections=site.data.cv %}
+      {% elsif render_legacy_cv and cv_data %}
+        {% include data_sections.liquid sections=cv_data %}
 
-      {% elsif render_jsonresume and site.data.resume %}
+      {% elsif render_jsonresume and resume_data %}
         {% comment %} JSONResume format {% endcomment %}
 
         <!-- Contact Information -->
-        {% if site.data.resume.basics %}
+        {% if resume_data.basics %}
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Contact Information</h3>
-            {% assign basics = site.data.resume.basics %}
+            {% assign basics = resume_data.basics %}
             <table class="table table-cv table-sm table-borderless">
               {% if basics.name %}
                 <tr>
@@ -263,17 +275,17 @@ layout: default
         {% endif %}
 
         <!-- Summary -->
-        {% if site.data.resume.basics.summary %}
+        {% if resume_data.basics.summary %}
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Professional Summary</h3>
-            <p>{{ site.data.resume.basics.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+            <p>{{ resume_data.basics.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
           </div>
         {% endif %}
 
         <!-- JSONResume Sections - Merge work and volunteer into Experience -->
         {% assign empty_array = '' | split: ',' %}
-        {% assign work = site.data.resume.work | default: empty_array %}
-        {% assign vol = site.data.resume.volunteer | default: empty_array %}
+        {% assign work = resume_data.work | default: empty_array %}
+        {% assign vol = resume_data.volunteer | default: empty_array %}
         {% assign combined_experience = work | concat: vol %}
         {% if combined_experience.size > 0 %}
           <a class="anchor" id="experience"></a>
@@ -287,108 +299,108 @@ layout: default
         {% endif %}
 
         <!-- Education -->
-        {% if site.data.resume.education.size > 0 %}
+        {% if resume_data.education.size > 0 %}
           <a class="anchor" id="education"></a>
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Education</h3>
             <div>
-              {% assign entries = site.data.resume.education %}
+              {% assign entries = resume_data.education %}
               {% include cv/education.liquid %}
             </div>
           </div>
         {% endif %}
 
         <!-- Awards -->
-        {% if site.data.resume.awards.size > 0 %}
+        {% if resume_data.awards.size > 0 %}
           <a class="anchor" id="awards"></a>
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Awards</h3>
             <div>
-              {% assign entries = site.data.resume.awards %}
+              {% assign entries = resume_data.awards %}
               {% include cv/awards.liquid %}
             </div>
           </div>
         {% endif %}
 
         <!-- Publications -->
-        {% if site.data.resume.publications.size > 0 %}
+        {% if resume_data.publications.size > 0 %}
           <a class="anchor" id="publications"></a>
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Publications</h3>
             <div>
-              {% assign entries = site.data.resume.publications %}
+              {% assign entries = resume_data.publications %}
               {% include cv/publications.liquid %}
             </div>
           </div>
         {% endif %}
 
         <!-- Skills -->
-        {% if site.data.resume.skills.size > 0 %}
+        {% if resume_data.skills.size > 0 %}
           <a class="anchor" id="skills"></a>
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Skills</h3>
             <div>
-              {% assign entries = site.data.resume.skills %}
+              {% assign entries = resume_data.skills %}
               {% include cv/skills.liquid %}
             </div>
           </div>
         {% endif %}
 
         <!-- Languages -->
-        {% if site.data.resume.languages.size > 0 %}
+        {% if resume_data.languages.size > 0 %}
           <a class="anchor" id="languages"></a>
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Languages</h3>
             <div>
-              {% assign entries = site.data.resume.languages %}
+              {% assign entries = resume_data.languages %}
               {% include cv/languages.liquid %}
             </div>
           </div>
         {% endif %}
 
         <!-- Interests -->
-        {% if site.data.resume.interests.size > 0 %}
+        {% if resume_data.interests.size > 0 %}
           <a class="anchor" id="interests"></a>
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Interests</h3>
             <div>
-              {% assign entries = site.data.resume.interests %}
+              {% assign entries = resume_data.interests %}
               {% include cv/interests.liquid %}
             </div>
           </div>
         {% endif %}
 
         <!-- Certificates -->
-        {% if site.data.resume.certificates.size > 0 %}
+        {% if resume_data.certificates.size > 0 %}
           <a class="anchor" id="certificates"></a>
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Certificates</h3>
             <div>
-              {% assign entries = site.data.resume.certificates %}
+              {% assign entries = resume_data.certificates %}
               {% include cv/certificates.liquid %}
             </div>
           </div>
         {% endif %}
 
         <!-- Projects -->
-        {% if site.data.resume.projects.size > 0 %}
+        {% if resume_data.projects.size > 0 %}
           <a class="anchor" id="projects"></a>
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Projects</h3>
             <div>
-              {% assign entries = site.data.resume.projects %}
+              {% assign entries = resume_data.projects %}
               {% include cv/projects.liquid %}
             </div>
           </div>
         {% endif %}
 
         <!-- References -->
-        {% if site.data.resume.references.size > 0 %}
+        {% if resume_data.references.size > 0 %}
           <a class="anchor" id="references"></a>
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">References</h3>
             <div>
-              {% assign entries = site.data.resume.references %}
+              {% assign entries = resume_data.references %}
               {% include cv/references.liquid %}
             </div>
           </div>

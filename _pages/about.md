@@ -2,6 +2,8 @@
 layout: about
 title: About Me
 permalink: /
+lang: en
+ref: about
 subtitle: <a href='#'>University of Verona</a>.
 
 profile:

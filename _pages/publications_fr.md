@@ -1,17 +1,13 @@
 ---
 layout: page
-permalink: /publications/
+permalink: /fr/publications/
 title: Publications
-lang: en
+lang: fr
 ref: publications
-description: publications by categories in reversed chronological order.
+description: Publications par catégories en ordre chronologique inversé.
 nav: true
 nav_order: 1
 ---
-
-<!-- _pages/publications.md -->
-
-<!-- Bibsearch Feature -->
 
 {% include bib_search.liquid %}
 

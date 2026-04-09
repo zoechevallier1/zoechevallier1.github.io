@@ -1,0 +1,39 @@
+- title: Structures de données et algorithmes
+  type: map
+  contents:
+    - name: Niveau
+      value: Licence (2e année)
+    - name: Contenu du cours
+      value: Pseudo-code algorithmique, complexité, structures de données (tableaux, piles/files, listes chaînées, arbres), principes algorithmiques (récursivité, algorithmes de tri, traitement d'arbres)
+
+- title: Introduction à la programmation
+  type: map
+  contents:
+    - name: Niveau
+      value: Licence (1re année)
+    - name: Contenu du cours
+      value: Langage Python
+
+- title: Programmation, génie logiciel
+  type: map
+  contents:
+    - name: Niveau
+      value: Master (1re année)
+    - name: Contenu du cours
+      value: Langage Java, programmation orientée objet
+
+- title: Cours de mise à niveau en programmation
+  type: map
+  contents:
+    - name: Niveau
+      value: Master (1re année)
+    - name: Contenu du cours
+      value: Langage Java, programmation orientée objet
+
+- title: Introduction aux bases de données
+  type: map
+  contents:
+    - name: Niveau
+      value: Licence (2e année)
+    - name: Contenu du cours
+      value: Modèles entité-association, algèbre relationnelle, SQL

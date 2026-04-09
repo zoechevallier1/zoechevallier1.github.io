@@ -16,12 +16,18 @@ layout: default
 
   <article>
     {{ content }}
+    {% assign current_lang = page.lang | default: site.lang | split: '-' | first %}
     {% assign teaching_sections = site.data.teaching %}
+    {% if current_lang == 'fr' and site.data.teaching_fr %}
+      {% assign teaching_sections = site.data.teaching_fr %}
+    {% endif %}
     {% if teaching_sections and teaching_sections.size > 0 %}
       <div class="row teaching-layout mt-4">
         <aside class="col-lg-3 teaching-sidebar-wrap">
           <nav class="teaching-sidebar" aria-label="Teaching lesson titles">
-            <h2 class="teaching-sidebar-title">Lessons</h2>
+            <h2 class="teaching-sidebar-title">
+              {% if current_lang == 'fr' %}Cours{% else %}Lessons{% endif %}
+            </h2>
             <ul class="list-unstyled mb-0">
               {% for section in teaching_sections %}
                 <li>
@@ -36,7 +42,7 @@ layout: default
         </div>
       </div>
     {% else %}
-      {% include data_sections.liquid sections=site.data.teaching variant='teaching' %}
+      {% include data_sections.liquid sections=teaching_sections variant='teaching' %}
     {% endif %}
   </article>
 
