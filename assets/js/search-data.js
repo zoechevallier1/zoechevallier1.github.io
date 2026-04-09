@@ -9,12 +9,26 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-publications",
+  },{id: "nav-a-propos",
+          title: "A propos",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/fr/";
+          },
+        },{id: "nav-publications",
           title: "Publications",
           description: "publications by categories in reversed chronological order.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
+          },
+        },{id: "nav-publications",
+          title: "Publications",
+          description: "Publications par catégories en ordre chronologique inversé.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/fr/publications/";
           },
         },{id: "nav-cv",
           title: "CV",
@@ -23,12 +37,26 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/fr/cv/";
+          },
         },{id: "nav-teaching",
           title: "Teaching",
           description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teaching/";
+          },
+        },{id: "nav-enseignement",
+          title: "Enseignement",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/fr/teaching/";
           },
         },{id: "post-google-gemini-updates-flash-1-5-gemma-2-and-project-astra",
         
