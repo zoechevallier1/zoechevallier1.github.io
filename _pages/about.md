@@ -4,7 +4,7 @@ title: About Me
 permalink: /
 lang: en
 ref: about
-subtitle: <a href='#'>Researcher at University of Verona, Itlay</a>.
+subtitle: <a href='#'>Researcher at University of Verona, Italy</a>.
 
 profile:
   align: right
