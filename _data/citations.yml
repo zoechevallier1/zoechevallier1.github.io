@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-06-03'
+  last_updated: '2026-08-10'
 papers:
   TdXjdssAAAAJ:2osOgNQ5qMEC:
     citations: 5
@@ -22,6 +22,6 @@ papers:
     title: Data Search and Discovery in RDF Sources
     year: '2024'
   TdXjdssAAAAJ:u5HHmVD_uO8C:
-    citations: 64
+    citations: 66
     title: A Reference Architecture for Smart Building Digital Twin.
     year: '2020'
